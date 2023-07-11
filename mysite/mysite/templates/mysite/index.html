@@ -1,0 +1,31 @@
+{% extends 'mysite/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link type="text/css" rel="stylesheet" href="{% static 'mysite/css/WeatherStyle.css' %}">
+  <div class="api">
+  </div>
+  <section class="top-banner">
+    <div class="container">
+      <h1 class="heading">Прогноз погоды</h1>
+      <form>
+        <input type="text" placeholder="Найти город" autofocus>
+        <button type="submit">Поиск</button>
+        <span class="msg"></span>
+      </form>
+    </div>
+  </section>
+  <section class="ajax-section">
+    <div class="container">
+      <ul class="cities"></ul>
+    </div>
+  </section>
+  <footer class="page-footer">
+    <div class="container">
+    
+      </small>
+        <script src="{% static 'mysite/js/Weatherscript.js' %}"></script>
+    </div>
+  </footer>
+
+{% endblock %}

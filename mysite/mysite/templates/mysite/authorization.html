@@ -1,0 +1,44 @@
+{% load static %}
+
+
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'mysite/css/style.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <form class="authorization" method="post">
+        {% csrf_token %}
+  			<h1>Авторизация</h1>
+
+        <div>{{form.non_field_errors }}</div>
+        
+        <label for="username">
+          <span>Имя пользователя</span>
+
+          
+          {{ form.username }}
+        </label>
+  			<label for="password">
+  				<span>Пароль</span>
+          
+     
+  				{{ form.password }}
+  			</label>
+  
+         <label>
+          <input type="checkbox" name="remember" style="margin-bottom:15px"> Запомнить меня
+           <span>
+             <br>
+             <a href="{% url 'register' %}">Нет аккаунта?</a></span>
+        </label>
+    
+  			<input value="Войти" type="submit">
+    
+        <script src="{% static 'mysite/js/script.js' %}"></script>
+      </form>
+
+  	</div>
+  </body>
+</html>

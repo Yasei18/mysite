@@ -1,0 +1,118 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+.feedbacks {
+  padding: 10px;
+}
+
+.feedback__header {
+  font-size: 48px;
+  font-weight: 600;
+  background-image: radial-gradient(circle, #553c9a, #ee4b2b);
+  color: transparent;
+  -webkit-background-clip: text;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.feedback__item {
+  margin: 15px 48px;
+  border-width: 3.5px;
+  border-style: solid dashed solid dashed;
+  border-color: #f16f55 #f3e5f5 #f16f55 #f3e5f5;
+}
+
+.feedback__label {
+  padding: 5px;
+  font-size: 18px;
+}
+
+.feedback__content {
+  padding: 10px;
+}
+
+.feedback__link {
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin: 0 20px;
+  font-size: 24px;
+  transition: .3s ease-in-out;
+  padding-top: 10px;
+}
+
+.add__feedback {
+   background-image: linear-gradient(#FE5568 50%, #FE5568 50%), linear-gradient(silver 50%, silver 50%);
+   background-position: center bottom;
+   background-repeat: no-repeat;
+   background-size: 0 2px, 100% 2px;
+   color: #1E3A52;
+   padding-bottom: 3px;
+   transition: .5s ease-in-out;
+}
+.add__feedback:hover {
+   background-size: 100% 2px, 100% 2px;
+   color: #FE5568;
+}
+
+.like-block {
+  display:inline-block;
+  padding: 0px 10px;
+}
+
+.dislike-block {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.like-icon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url(../images/like.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.like-icon.added {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url(../images/like-clicked.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dislike-icon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url(../images/dislike.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dislike-icon.added {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url(../images/dislike-clicked.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.block div {
+  width: 10em;
+  height: 2em;
+}

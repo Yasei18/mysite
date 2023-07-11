@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'mysite/css/header.css' %}">
+  </head>
+  <body>
+    {% block mainmenu %}
+    <div class="header">
+      <ul id="mainmenu" class="mainmenu">
+        {% for m in menu %}
+        {% if not forloop.last %}
+        <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+        {% else %}
+          {% if not user.is_authenticated %}
+          <li class="last"><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+          {% else %}
+          <li class="last"><a href="{% url 'logout' %}">Выйти</a></li>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+      </ul>
+      <div class="clear"></div>
+		</div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

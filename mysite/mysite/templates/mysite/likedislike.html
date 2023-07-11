@@ -1,0 +1,22 @@
+{% load feedback_tags %}
+{% load static %}
+
+{% if user.is_authenticated %}
+<div class="like-block">
+    <div data-id="{{ like_obj.id }}" data-type="feedback" data-action="like" title="Нравится">
+        <div class="like-icon {% if like_obj.votes.likes|user_in:user %}added{% endif %}"
+             id="#l_{{ like_obj.id }}"></div>
+        <div data-count="like" style="text-align: center; padding: 2px;" data-type="like"
+             data-id="{{ like_obj.id }}" id="#l_count_{{ like_obj.id }}">{{ like_obj.votes.likes.count }}</div>
+    </div>
+</div>
+
+<div class="dislike-block">
+    <div data-id="{{ like_obj.id }}" data-type="feedback" data-action="dislike" title="Не нравится">
+        <div class="dislike-icon {% if like_obj.votes.dislikes|user_in:user %}added{% endif %}"
+             id="#dl_{{ like_obj.id }}"></div>
+        <div data-count="dislike" style="text-align: center; padding: 2px;"
+             id="#dl_count_{{ like_obj.id }}">{{ like_obj.votes.dislikes.count }}</div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,71 @@
+{% extends 'mysite/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Стили для всплывающего окна -->
+<link type="text/css" rel="stylesheet" href="{% static 'mysite/css/popup.css' %}">
+<!-- Стили для отзывов -->
+<link type="text/css" rel="stylesheet" href="{% static 'mysite/css/feedback.css' %}">
+<!-- Подключение jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<div id="popup" class="popup">
+  <a href="#header" class="popup__area"></a>
+  <div class="popup__body">
+    <div class="popup__content">
+      <a href="#header" class="popup__close">X</a>
+      {% if user.is_authenticated %}
+      <div class="feedback__header">Добавление отзыва</div>
+      <div class="popup_wrapper">
+        <div class="popup__form">
+          <div id="content">
+            <form action="{% url 'feedback' %}" method="post">
+              {% csrf_token %}
+              <p>
+                <label class="form-label" for="{{ form.title.id_for_label }}">
+                  {{ form.text.label }} </label>
+                <br>
+                {{ form.text }}
+              </p>
+              <button type="submit" class="add-feedback">Добавить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <h1>Чтобы добавить отзыв, нужно войти</h1>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p class="feedback__header">Отзывы</p>
+
+  <a href="#popup" class="feedback__link add__feedback">Добавить отзыв</a>
+  <div class="feedbacks">
+    {% for f in feedbacks %}
+    <div class="feedback__item">
+<!--      <div class="block">-->
+        <div class="feedback__label">
+        Отзыв от пользователя {{ f.user }}:
+      </div>
+<!--      {% if f.user == request.user %}<div>-->
+<!--        <a href="{%comment%}{% url 'delete'%}{%endcomment%}}?id={{ f.pk }}" class="delete" title="Удалить">X</a>-->
+<!--      </div>{% endif %}-->
+<!--      </div>-->
+      
+      <div class="feedback__content">
+        {{ f.text }} <br>
+      </div>
+
+      {% include 'mysite/likedislike.html' with like_obj=f %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{% static 'mysite/js/likedislike.js' %}"></script>
+<script src="{% static 'mysite/js/popup.js' %}"></script>
+
+{% endblock %}

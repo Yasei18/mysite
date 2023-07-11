@@ -1,0 +1,58 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'mysite/css/style.css' %}">
+  </head>
+  <body>
+  <div class="container">
+    <form class="registration" method="post">
+      <h1>Форма регистрации</h1>
+      {% csrf_token %}
+      <label for="username">
+  				<span>Имя пользователя</span>
+  
+  				{{ form.username }}
+  
+  				<ul class="input-requirements">
+  					<li>Длина должна составлять не мнее 3 символов</li>
+  					<li>Имя пользователя должен содержать буквы русского алфавита </li>
+  				</ul>
+  			</label>
+
+      <label for="email">
+          <span>Адрес электронной почты</span>
+          {{ form.email }}
+      </label>
+
+      <label for="password">
+  				<span>Пароль</span>
+        
+  				{{ form.password1 }}
+  
+  				<ul class="input-requirements">
+  					<li>Минимальная длина 8 символов (максимум 100)</li>
+  					<li>Содержит хотя бы 1 цифру</li>
+  					<li>Содержит хотя бы 1 маленькую букву</li>
+  					<li>Содержит хотя бы 1 большую букву</li>
+  					<li>Содержит спецсивм (e.g. @ !)</li>
+  				</ul>
+  			</label>
+
+      <label for="password_repeat">
+  				<span>Повторите пароль</span>
+  				{{ form.password2 }}
+  			</label>
+  
+         <label>
+          <input type="checkbox" name="remember" style="margin-bottom:15px"> Запомнить меня
+        </label>
+      
+      <button type="submit">Регистрация</button>
+
+      <script src="{% static 'mysite/js/script.js' %}"></script>
+    </form>
+  	</div>
+  </body>
+</html>
